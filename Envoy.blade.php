@@ -1,13 +1,13 @@
-@servers(['web' => '192.168.1.1'])
+@servers(['web' => 'forge@ssh.klsandbox.com'])
 
-@task('foo', ['on' => 'web'])
-    ls -la
+@task('su', ['on' => 'web'])
+    /home/forge/satis.klsandbox.com/bin/update.sh {{ $var }}
 @endtask
 
-@task('confirmed', ['on' => 'web', 'confirm' => true])
-    ls -la
+@task('ls', ['on' => 'web'])
+ls -la
 @endtask
 
 @after
-    @hipchat('token', 'room', 'Envoy')
+#    @hipchat('token', 'room', 'Envoy')
 @endafter
